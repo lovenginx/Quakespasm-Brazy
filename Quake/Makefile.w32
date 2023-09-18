@@ -1,4 +1,4 @@
-# GNU Makefile for compiling Win32 quakespasm.exe using MinGW or MinGW-w64.
+# GNU Makefile for compiling Win32 quakespasm-brazy.exe using MinGW or MinGW-w64.
 # Usage: "make -f Makefile.w32"
 # To cross-compile on Linux hosts, see the build_cross_win32*.sh scripts.
 # "make DEBUG=1" to build a debug client.
@@ -284,7 +284,7 @@ OBJS := strlcat.o \
 
 .PHONY:	clean debug release
 
-DEFAULT_TARGET := quakespasm.exe
+DEFAULT_TARGET := quakespasm-brazy.exe
 all: $(DEFAULT_TARGET)
 
 %.o:	%.c
@@ -292,11 +292,11 @@ all: $(DEFAULT_TARGET)
 %.res:	../Windows/%.rc
 	$(WINDRES) -I../Windows --output-format=coff --target=pe-i386 -o $@ $<
 
-quakespasm.exe: $(OBJS) $(SYSOBJ_RES)
+quakespasm-brazy.exe: $(OBJS) $(SYSOBJ_RES)
 	$(LINKER) $(OBJS) $(SYSOBJ_RES) $(LDFLAGS) $(LIBS) $(SDL_LIBS) -o $@
 	$(call do_strip,$@)
 
-release:	quakespasm.exe
+release:	quakespasm-brazy.exe
 debug:
 	$(error Use "make DEBUG=1")
 

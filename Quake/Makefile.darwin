@@ -323,7 +323,7 @@ OBJS := strlcat.o \
 
 .PHONY:	clean debug release
 
-DEFAULT_TARGET := quakespasm
+DEFAULT_TARGET := quakespasm-brazy
 all: $(DEFAULT_TARGET)
 
 %.o:	%.c
@@ -333,11 +333,11 @@ all: $(DEFAULT_TARGET)
 %.o:	../MacOSX/%.m
 	$(CC) $(DFLAGS) -c -I../MacOSX $(CFLAGS) $(SDL_CFLAGS) -o $@ $<
 
-quakespasm:	$(OBJS)
+quakespasm-brazy:	$(OBJS)
 	$(LINKER) $(OBJS) $(LDFLAGS) $(LIBS) $(SDL_LIBS) -o $@
 	$(call do_strip,$@)
 
-release:	quakespasm
+release:	quakespasm-brazy
 debug:
 	$(error Use "make DEBUG=1")
 

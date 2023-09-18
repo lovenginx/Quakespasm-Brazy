@@ -306,24 +306,24 @@ OBJS := strlcat.o \
 
 .PHONY:	clean debug release
 
-DEFAULT_TARGET := quakespasm
+DEFAULT_TARGET := quakespasm-brazy
 all: $(DEFAULT_TARGET)
 
 %.o:	%.c
 	$(CC) $(DFLAGS) -c $(CFLAGS) $(SDL_CFLAGS) -o $@ $<
 
-quakespasm:	$(OBJS)
+quakespasm-brazy:	$(OBJS)
 	$(LINKER) $(OBJS) $(LDFLAGS) $(LIBS) $(SDL_LIBS) -o $@
 	$(call do_strip,$@)
 
-release:	quakespasm
+release:	quakespasm-brazy
 debug:
 	$(error Use "make DEBUG=1")
 
 clean:
 	$(RM) *.o *.d $(DEFAULT_TARGET)
 
-install:	quakespasm
-	cp quakespasm /usr/local/games/quake
+install:	quakespasm-brazy
+	cp quakespasm-brazy /usr/local/games/quake
 
 sinclude $(OBJS:.o=.d)

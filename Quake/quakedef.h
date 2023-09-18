@@ -36,10 +36,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	X11_VERSION		1.10
 
 #define	FITZQUAKE_VERSION	0.85	//johnfitz
-#define	QUAKESPASM_VERSION	0.96
+#define	QUAKESPASM_VERSION	0.97
 #define	QUAKESPASM_VER_PATCH	0	// helper to print a string like 0.94.7
 #ifndef	QUAKESPASM_VER_SUFFIX
-#define	QUAKESPASM_VER_SUFFIX		// optional version suffix string literal like "-beta1"
+#define	QUAKESPASM_VER_SUFFIX	"-brazed"	// optional version suffix string literal like "-beta1"
 #endif
 
 #define	QS_STRINGIFY_(x)	#x
@@ -50,9 +50,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #ifdef QSS_DATE
 	// combined version string like "2020-10-20-beta1"
-	#define	ENGINE_NAME_AND_VER	"QSS " QS_STRINGIFY(QSS_DATE) QUAKESPASM_VER_SUFFIX
+	#define	ENGINE_NAME_AND_VER	"QSB " QS_STRINGIFY(QSS_DATE) QUAKESPASM_VER_SUFFIX
 #else
-	#define ENGINE_NAME_AND_VER "QSS" " " QUAKESPASM_VER_STRING
+	#define ENGINE_NAME_AND_VER "QSB" " " QUAKESPASM_VER_STRING
 #endif
 
 //define	PARANOID			// speed sapping error checking

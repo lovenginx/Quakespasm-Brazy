@@ -273,13 +273,13 @@ void Host_Version_f (void)
 	Con_Printf ("Quake Version %1.2f\n", VERSION);
 	Con_Printf ("QuakeSpasm Version " QUAKESPASM_VER_STRING "\n");
 #ifdef QSS_VERSION
-	Con_Printf ("QSS Git Description " QS_STRINGIFY(QSS_VERSION) "\n");
+	Con_Printf ("QSB Git Description " QS_STRINGIFY(QSS_VERSION) "\n");
 #endif
 #ifdef QSS_REVISION
-	Con_Printf ("QSS Git Revision " QS_STRINGIFY(QSS_REVISION) "\n");
+	Con_Printf ("QSB Git Revision " QS_STRINGIFY(QSS_REVISION) "\n");
 #endif
 #ifdef QSS_DATE
-	Con_Printf ("QuakeSpasm-Spiked Build " QS_STRINGIFY(QSS_DATE) "\n");
+	Con_Printf ("QuakeSpasm-Brazy Build " QS_STRINGIFY(QSS_DATE) "\n");
 #else
 	Con_Printf ("Exe: " __TIME__ " " __DATE__ "\n");
 #endif
@@ -849,7 +849,7 @@ static void CL_LoadCSProgs(void)
 				int maj = (int)QUAKESPASM_VERSION;
 				int min = (QUAKESPASM_VERSION-maj) * 100;
 				G_FLOAT(OFS_PARM0) = fullcsqc;
-				G_INT(OFS_PARM1) = PR_SetEngineString("QuakeSpasm-Spiked");
+				G_INT(OFS_PARM1) = PR_SetEngineString("QuakeSpasm-Brazy");
 				G_FLOAT(OFS_PARM2) = 10000*maj + 100*(min) + QUAKESPASM_VER_PATCH;
 				PR_ExecuteProgram(qcvm->extfuncs.CSQC_Init);
 			}

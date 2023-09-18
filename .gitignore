@@ -4,4 +4,6 @@
 *.exe
 *.dll
 *.res
+Quake/build
+Quake/build-win
 history.txt
