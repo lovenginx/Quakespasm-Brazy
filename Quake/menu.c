@@ -1031,7 +1031,7 @@ enum
 	OPT_CONSOLE,	// 1
 	OPT_DEFAULTS,	// 2
 	OPT_FOV,
-	OPT_FPS,
+	// OPT_FPS,
 	OPT_SCALE,
 	OPT_SCRSIZE,
 	OPT_GAMMA,
@@ -1091,12 +1091,12 @@ void M_AdjustSliders (int dir)
 		else if (f < 90)	f = 90;
 		Cvar_SetValue("fov", f);
 		break;
-	case OPT_FPS:	// frames per second
-		f = host_maxfps.value + dir * 10;
-		if (f > 500)	f = 500;
-		else if (f < 72)	f = 72;
-		Cvar_SetValue("host_maxfps", f);
-		break;
+	// case OPT_FPS:	// frames per second
+	// 	f = host_maxfps.value + dir * 10;
+	// 	if (f > 500)	f = 500;
+	// 	else if (f < 72)	f = 72;
+	// 	Cvar_SetValue("host_maxfps", f);
+	// 	break;
 	case OPT_SCALE:	// console and menu scale
 		l = ((vid.width + 31) / 32) / 10.0;
 		f = scr_conscale.value + dir * .1;
@@ -1256,9 +1256,9 @@ void M_Options_Draw (void)
 	M_DrawSlider(220, 32 + 8 * OPT_FOV, r);
 
 	// OPT_FPS:
-	M_Print(16, 32 + 8 * OPT_FPS, "     Frames per second");
-	r = (host_maxfps.value - 72) / (500 - 72);
-	M_DrawSlider(220, 32 + 8 * OPT_FPS, r);
+	// M_Print(16, 32 + 8 * OPT_FPS, "     Frames per second");
+	// r = (host_maxfps.value - 72) / (500 - 72);
+	// M_DrawSlider(220, 32 + 8 * OPT_FPS, r);
 
 	// OPT_SCALE:
 	M_Print (16, 32 + 8*OPT_SCALE,		"                 Scale");
@@ -1725,10 +1725,10 @@ void M_Keys_Key (int k)
 
 static enum extras_e
 {
-	EXTRAS_FILTERING,
+	// EXTRAS_FILTERING,
 	EXTRAS_EXTERNALTEX,
 	EXTRAS_REPLACEMENTMODELS,
-	EXTRAS_MODELLERP,
+	// EXTRAS_MODELLERP,
 	EXTRAS_FPSCAP,
 	EXTRAS_YIELD,
 	EXTRAS_DEMOREEL,
@@ -1759,25 +1759,25 @@ static void M_Extras_AdjustSliders (int dir)
 
 	switch (extras_cursor)
 	{
-	case EXTRAS_FILTERING:
-		m = TexMgr_GetTextureMode() + dir;
-		while (m == 3 || (m>4&&m<8) || (m>8&&m<16))
-			m += dir;
-		if (m < 0)
-			m = 16;
-		else if (m > 16)
-			m = 0;
-		if (m == 0)
-		{
-			Cvar_Set ("gl_texturemode", "nll");	//use linear minification filter to reduce distant noise without uglifying the visuals.
-			Cvar_Set ("gl_texture_anisotropy", "1");
-		}
-		else
-		{
-			Cvar_Set ("gl_texturemode", "GL_LINEAR_MIPMAP_LINEAR");
-			Cvar_SetValue ("gl_texture_anisotropy", m);
-		}
-		break;
+	// case EXTRAS_FILTERING:
+	// 	m = TexMgr_GetTextureMode() + dir;
+	// 	while (m == 3 || (m>4&&m<8) || (m>8&&m<16))
+	// 		m += dir;
+	// 	if (m < 0)
+	// 		m = 16;
+	// 	else if (m > 16)
+	// 		m = 0;
+	// 	if (m == 0)
+	// 	{
+	// 		Cvar_Set ("gl_texturemode", "nll");	//use linear minification filter to reduce distant noise without uglifying the visuals.
+	// 		Cvar_Set ("gl_texture_anisotropy", "1");
+	// 	}
+	// 	else
+	// 	{
+	// 		Cvar_Set ("gl_texturemode", "GL_LINEAR_MIPMAP_LINEAR");
+	// 		Cvar_SetValue ("gl_texture_anisotropy", m);
+	// 	}
+	// 	break;
 	case EXTRAS_EXTERNALTEX:
 		Cvar_SetValueQuick (&gl_load24bit, !gl_load24bit.value);
 		Cbuf_AddText("flush\n");	//needs to be a vid_reload, but qs doesn't exactly do that nicely...
@@ -1786,18 +1786,18 @@ static void M_Extras_AdjustSliders (int dir)
 		Cvar_SetQuick (&r_replacemodels, *r_replacemodels.string?"":"iqm md5mesh md3");
 		Cbuf_AddText("flush\n");
 		break;
-	case EXTRAS_MODELLERP:
-		if (r_lerpmodels.value || r_lerpmove.value)
-		{
-			Cvar_SetValueQuick(&r_lerpmodels, 0);
-			Cvar_SetValueQuick(&r_lerpmove, 0);
-		}
-		else
-		{
-			Cvar_SetValueQuick(&r_lerpmodels, 1);
-			Cvar_SetValueQuick(&r_lerpmove,  1);
-		}
-		break;
+	// case EXTRAS_MODELLERP:
+	// 	if (r_lerpmodels.value || r_lerpmove.value)
+	// 	{
+	// 		Cvar_SetValueQuick(&r_lerpmodels, 0);
+	// 		Cvar_SetValueQuick(&r_lerpmove, 0);
+	// 	}
+	// 	else
+	// 	{
+	// 		Cvar_SetValueQuick(&r_lerpmodels, 1);
+	// 		Cvar_SetValueQuick(&r_lerpmove,  1);
+	// 	}
+	// 	break;
 	case EXTRAS_FPSCAP:
 		{
 			static int caps[] = {30, 60, 72, 120, 144, 500, 0};
@@ -1875,22 +1875,22 @@ void M_Extras_Draw (void)
 		int y = 32 + 8*i;
 		switch(i)
 		{
-		case EXTRAS_FILTERING:
-			M_Print (16, y,	"     Texture Filtering");
-			m = TexMgr_GetTextureMode();
-			switch(m)
-			{
-			case 0:
-				M_Print (220, 32 + 8*i, "nearest");
-				break;
-			case 1:
-				M_Print (220, 32 + 8*i, "linear");
-				break;
-			default:
-				M_Print (220, 32 + 8*i, va("anisotropic %i", m));
-				break;
-			}
-			break;
+		// case EXTRAS_FILTERING:
+		// 	M_Print (16, y,	"     Texture Filtering");
+		// 	m = TexMgr_GetTextureMode();
+		// 	switch(m)
+		// 	{
+		// 	case 0:
+		// 		M_Print (220, 32 + 8*i, "nearest");
+		// 		break;
+		// 	case 1:
+		// 		M_Print (220, 32 + 8*i, "linear");
+		// 		break;
+		// 	default:
+		// 		M_Print (220, 32 + 8*i, va("anisotropic %i", m));
+		// 		break;
+		// 	}
+		// 	break;
 		case EXTRAS_EXTERNALTEX:
 			M_Print (16, y,	"  Replacement Textures");
 			M_DrawCheckbox (220, y, !!gl_load24bit.value);
@@ -1899,10 +1899,10 @@ void M_Extras_Draw (void)
 			M_Print (16, y,	"    Replacement Models");
 			M_DrawCheckbox (220, y, !!*r_replacemodels.string);
 			break;
-		case EXTRAS_MODELLERP:
-			M_Print (16, y,	"            Model Lerp");
-			M_DrawCheckbox(220, y, !!r_lerpmodels.value && !!r_lerpmove.value);
-			break;
+		// case EXTRAS_MODELLERP:
+		// 	M_Print (16, y,	"            Model Lerp");
+		// 	M_DrawCheckbox(220, y, !!r_lerpmodels.value && !!r_lerpmove.value);
+		// 	break;
 		case EXTRAS_FPSCAP:
 			if (host_maxfps.value < 0)
 				M_Print (16, y,	"           Maximum PPS");

@@ -288,9 +288,10 @@ quakespasm-brazy.exe: $(OBJS) $(SYSOBJ_RES)
 	$(LINKER) $(OBJS) $(SYSOBJ_RES) $(LDFLAGS) $(LIBS) $(SDL_LIBS) -o $@
 	$(call do_strip,$@)
 	rm -rf ./build-win
-	mkdir -p ./build-win
+	mkdir -p ./build-win/id1
 	mv ./*.exe ./build-win
-	cp ../Windows/codecs/x64/*.dll ../Windows/SDL2/lib64/*.dll ./quakespasm.pak ./build-win
+	cp ../Windows/codecs/x64/*.dll ../Windows/SDL2/lib64/*.dll ./build-win
+	cp ./quakespasm.pak ./build-win/id1
 
 release:	quakespasm-brazy.exe
 debug:

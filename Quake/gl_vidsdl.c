@@ -1866,7 +1866,7 @@ void VID_SyncCvars (void)
 //==========================================================================
 
 enum {
-	VID_OPT_RENDERSCALE,
+	// VID_OPT_RENDERSCALE,
 	VID_OPT_FILTERING,
 	VID_OPT_INTERPOLATION,
 	VID_OPT_PARTICLES,
@@ -2179,17 +2179,17 @@ static void VID_MenuKey (int key)
 		S_LocalSound ("misc/menu3.wav");
 		switch (video_options_cursor)
 		{
-		case VID_OPT_RENDERSCALE:
-			if (f > 1)
-			{
-				f = r_scale.value - 1;
-				Cvar_SetValue("r_scale", f);
-			}
-			else
-			{
-				Cvar_SetValue("r_scale", 4);
-			}
-			break;
+		// case VID_OPT_RENDERSCALE:
+		// 	if (f > 1)
+		// 	{
+		// 		f = r_scale.value - 1;
+		// 		Cvar_SetValue("r_scale", f);
+		// 	}
+		// 	else
+		// 	{
+		// 		Cvar_SetValue("r_scale", 4);
+		// 	}
+		// 	break;
 		case VID_OPT_FILTERING:
 			if (TexMgr_TextureModeIsLinear())
 				Cbuf_AddText("gl_texturemode GL_NEAREST_MIPMAP_LINEAR\n");
@@ -2241,17 +2241,17 @@ static void VID_MenuKey (int key)
 		S_LocalSound ("misc/menu3.wav");
 		switch (video_options_cursor)
 		{
-		case VID_OPT_RENDERSCALE:
-			if (f < 4)
-			{
-				f = r_scale.value + 1;
-				Cvar_SetValue("r_scale", f);
-			}
-			else
-			{
-				Cvar_SetValue("r_scale", 1);
-			}
-			break;
+		// case VID_OPT_RENDERSCALE:
+		// 	if (f < 4)
+		// 	{
+		// 		f = r_scale.value + 1;
+		// 		Cvar_SetValue("r_scale", f);
+		// 	}
+		// 	else
+		// 	{
+		// 		Cvar_SetValue("r_scale", 1);
+		// 	}
+		// 	break;
 		case VID_OPT_FILTERING:
 			if (TexMgr_TextureModeIsLinear())
 				Cbuf_AddText("gl_texturemode GL_NEAREST_MIPMAP_LINEAR\n");
@@ -2305,17 +2305,17 @@ static void VID_MenuKey (int key)
 		m_entersound = true;
 		switch (video_options_cursor)
 		{
-		case VID_OPT_RENDERSCALE:
-			if (f > 1)
-			{
-				f = r_scale.value - 1;
-				Cvar_SetValue("r_scale", f);
-			}
-			else
-			{
-				Cvar_SetValue("r_scale", 4);
-			}
-			break;
+		// case VID_OPT_RENDERSCALE:
+		// 	if (f > 1)
+		// 	{
+		// 		f = r_scale.value - 1;
+		// 		Cvar_SetValue("r_scale", f);
+		// 	}
+		// 	else
+		// 	{
+		// 		Cvar_SetValue("r_scale", 4);
+		// 	}
+		// 	break;
 		case VID_OPT_FILTERING:
 			if (TexMgr_TextureModeIsLinear())
 				Cbuf_AddText("gl_texturemode GL_NEAREST_MIPMAP_LINEAR\n");
@@ -2411,13 +2411,13 @@ static void VID_MenuDraw (void)
 	{
 		switch (i)
 		{
-		case VID_OPT_RENDERSCALE:
-			M_Print(16, y, "      Render scale");
-			if ((int)r_scale.value == 1)
-				M_Print(184, y, "native");
-			else
-				M_Print(184, y, va("1/%i", (int)r_scale.value));
-			break;
+		// case VID_OPT_RENDERSCALE:
+		// 	M_Print(16, y, "      Render scale");
+		// 	if ((int)r_scale.value == 1)
+		// 		M_Print(184, y, "native");
+		// 	else
+		// 		M_Print(184, y, va("1/%i", (int)r_scale.value));
+		// 	break;
 		case VID_OPT_FILTERING:
 			M_Print(16, y, "         Filtering");
 			if ((qboolean)TexMgr_TextureModeIsLinear())
