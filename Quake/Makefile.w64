@@ -290,7 +290,7 @@ quakespasm-brazy.exe: $(OBJS) $(SYSOBJ_RES)
 	rm -rf ./build-win
 	mkdir -p ./build-win
 	mv ./*.exe ./build-win
-	cp ../Windows/codecs/x64/*.dll ../Windows/SDL2/lib64/*.dll ./build-win
+	cp ../Windows/codecs/x64/*.dll ../Windows/SDL2/lib64/*.dll ./quakespasm.pak ./build-win
 
 release:	quakespasm-brazy.exe
 debug:
